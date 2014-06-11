@@ -1,0 +1,19 @@
+upstream {{name}} {
+  server 127.0.0.1:{{port}};
+  keepalive 64;
+}
+server {
+    listen 80;
+    server_name {{name}}.{{hostname}};
+    # server_name {{hostname}};
+    access_log /var/log/nginx/{{name}}-access.log;
+    error_log  /var/log/nginx/{{name}}-error.log notice;
+    location / {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+      proxy_pass http://{{name}}/;
+      proxy_redirect off;
+   }
+}

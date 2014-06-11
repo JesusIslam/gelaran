@@ -1,0 +1,19 @@
+{
+  "name": "Gelaran",
+  "description" : "A simple gitlab deployer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "gnode server.js"
+  },
+  "dependencies": {
+    "koa" : "*",
+    "gnode" : "*",
+    "koa-common" : "*",
+    "koa-router" : "*",
+    "nedb" : "*",
+    "co-body" : "*",
+    "thunkify" : "*",
+    "swig" : "*"
+  }
+}
